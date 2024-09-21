@@ -2,25 +2,22 @@
 </script>
 
 <template>
-  <div class="container">
-    <RouterView />
-  </div>
+  <NConfigProvider class="h-full w-full">
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component v-if="$route.meta.keepAlive" :is="Component" />
+      </keep-alive>
+      <component v-if="!$route.meta.keepAlive" :is="Component" />
+    </router-view>
+  </NConfigProvider>
 </template>
 
 <style scoped>
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+.h-full {
+  height: 100%;
+}
 
-  color: #0f0f0f;
-  background-color: #f6f6f6;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+.w-full {
+  width: 100%;
 }
 </style>
