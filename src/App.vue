@@ -7,12 +7,4 @@
   </NConfigProvider>
 </template>
 
-<style scoped>
-.h-full {
-  height: 100%;
-}
-
-.w-full {
-  width: 100%;
-}
-</style>
+<style scoped></style>
