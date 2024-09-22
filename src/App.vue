@@ -3,12 +3,7 @@
 
 <template>
   <NConfigProvider class="h-full w-full">
-    <router-view v-slot="{ Component }">
-      <keep-alive>
-        <component v-if="$route.meta.keepAlive" :is="Component" />
-      </keep-alive>
-      <component v-if="!$route.meta.keepAlive" :is="Component" />
-    </router-view>
+    <RouterView />
   </NConfigProvider>
 </template>
 

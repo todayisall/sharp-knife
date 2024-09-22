@@ -10,11 +10,19 @@ const routes: RouteRecordRaw[] = [
     component: BaseLayout,
     children: [
       {
-        path: "json/format",
+        path: "/json/format",
         name: "jsonFormat",
+        meta: {
+          keepAlive: true,
+        },
         component: () => import("@/views/json/Format.vue"),
       },
     ],
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/exception/404.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
