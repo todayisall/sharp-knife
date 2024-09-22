@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { NInput } from 'naive-ui';
+import { NInput, NButton } from 'naive-ui';
 const inputJson = ref('');
 const formattedJson = ref('');
 const formatJson = () => {
+    if(!inputJson.value) {
+        formattedJson.value = '';
+        return;
+    }
+    
     try {
         formattedJson.value = JSON.stringify(JSON.parse(inputJson.value), null, 2);
     } catch (e) {
@@ -12,20 +17,15 @@ const formatJson = () => {
 };
 </script>
 <template>
-    <div class="json-format">
-        <n-input class="input-area" v-model:value="inputJson" type="textarea" placeholder="输入 JSON 字符串" />
-        <button @click="formatJson">格式化</button>
-        <pre class="output-area">{{ formattedJson }}</pre>
+    <div class="flex h-full">
+        <n-input class="flex-1" @blur="formatJson" v-model:value="inputJson" type="textarea"
+            placeholder="输入 JSON 字符串" />
+        <div class="px-2">
+            <n-button @click="formatJson">格式化</n-button>
+        </div>
+        <pre class="flex-1 border overflow-auto">{{ formattedJson }}</pre>
     </div>
 </template>
 
 
-<style scoped>
-.json-format {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-}
-</style>
+<style scoped></style>

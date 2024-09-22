@@ -5,10 +5,10 @@ import { RouterLink } from 'vue-router';
 </script>
 <template>
   <n-layout has-sider class="h-full">
-    <n-layout-sider collapse-mode="width" :collapsed-width="120" :width="240" show-trigger="arrow-circle"
+    <n-layout-sider collapse-mode="width" :collapsed-width="60" :width="240" show-trigger="arrow-circle"
       content-style="padding: 24px;" bordered>
       <nav>
-        <router-link to="json/format">json 格式化</router-link>
+        <router-link to="/json/format">json 格式化</router-link>
       </nav>
     </n-layout-sider>
     <n-layout-content content-style="padding: 24px;">
@@ -23,8 +23,4 @@ import { RouterLink } from 'vue-router';
 </template>
 
 
-<style scoped>
-.h-full {
-  height: 100%;
-}
-</style>
+<style scoped></style>
