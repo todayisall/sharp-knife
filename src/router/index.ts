@@ -18,6 +18,14 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import("@/views/json/Format.vue"),
       },
+      {
+        path: "/json/toTsType",
+        name: "jsonToTsType",
+        meta: {
+          keepAlive: true,
+        },
+        component: () => import("@/views/json/2TsType.vue"),
+      },
     ],
   },
   {

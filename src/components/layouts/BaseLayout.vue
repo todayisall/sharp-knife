@@ -11,7 +11,7 @@ import type { Component } from "vue";
 import { h, ref } from "vue";
 import { RouterLink } from "vue-router";
 
-import { Baseball } from "@vicons/ionicons5";
+import { Baseball, BugSharp } from "@vicons/ionicons5";
 
 const collapsed = ref(true);
 const activeKey = ref("json/format");
@@ -32,8 +32,22 @@ const menuOptions: MenuOption[] = [
         },
         { default: () => "json 格式化" }
       ),
-    key: "go-back-home",
+    key: "jsonFormat",
     icon: renderIcon(Baseball),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: "jsonToTsType",
+          },
+        },
+        { default: () => "json2Ts" }
+      ),
+    key: "jsonToTsType",
+    icon: renderIcon(BugSharp),
   },
 ];
 </script>
@@ -50,9 +64,6 @@ const menuOptions: MenuOption[] = [
       @collapse="collapsed = true"
       @expand="collapsed = false"
     >
-      <!-- <nav>
-        <router-link to="/json/format">json 格式化</router-link>
-      </nav> -->
       <n-menu
         v-model:value="activeKey"
         :collapsed="collapsed"
@@ -63,10 +74,7 @@ const menuOptions: MenuOption[] = [
     </n-layout-sider>
     <n-layout-content content-style="padding: 24px;">
       <router-view v-slot="{ Component }">
-        <keep-alive>
-          <component v-if="$route.meta.keepAlive" :is="Component" />
-        </keep-alive>
-        <component v-if="!$route.meta.keepAlive" :is="Component" />
+        <component :is="Component" />
       </router-view>
     </n-layout-content>
   </n-layout>
