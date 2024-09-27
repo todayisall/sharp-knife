@@ -8,6 +8,9 @@ dependencies:
   '@tauri-apps/api':
     specifier: ^1
     version: 1.0.0
+  '@vicons/ionicons5':
+    specifier: ^0.12.0
+    version: 0.12.0
   naive-ui:
     specifier: ^2.39.0
     version: 2.39.0(vue@3.3.4)
@@ -648,6 +651,10 @@ packages:
     dependencies:
       undici-types: 6.19.8
     dev: true
+
+  /@vicons/ionicons5@0.12.0:
+    resolution: {integrity: sha512-Iy1EUVRpX0WWxeu1VIReR1zsZLMc4fqpt223czR+Rpnrwu7pt46nbnC2ycO7ItI/uqDLJxnbcMC7FujKs9IfFA==}
+    dev: false
 
   /@vitejs/plugin-vue@5.0.5(vite@5.3.1)(vue@3.3.4):
     resolution: {integrity: sha512-LOjm7XeIimLBZyzinBQ6OSm3UBCNVCpLkxGC0oWmm2YPzVZoxMsdvNVimLTBzpAnR9hl/yn1SHGuRfe6/Td9rQ==}

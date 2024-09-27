@@ -8,6 +8,7 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     name: "home",
     component: BaseLayout,
+    redirect: "/json/format",
     children: [
       {
         path: "/json/format",

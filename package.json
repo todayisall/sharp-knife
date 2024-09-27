@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1",
+    "@vicons/ionicons5": "^0.12.0",
     "naive-ui": "^2.39.0",
     "vue": "^3.3.4",
     "vue-router": "4"
