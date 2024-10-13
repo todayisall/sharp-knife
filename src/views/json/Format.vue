@@ -1,30 +1,37 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { NInput, NButton } from "naive-ui";
+import { onMounted, ref } from "vue";
+import { NButton } from "naive-ui";
+
+import { EditorView, basicSetup } from "codemirror";
+import { json, jsonLanguage } from "@codemirror/lang-json";
+
 const inputJson = ref("");
-const formattedJson = ref("");
+const formattedJson = ref<string[] | string>([]);
+const view = ref<EditorView | null>(null);
 const formatJson = () => {
-  if (!inputJson.value) {
-    formattedJson.value = "";
+  if (!view.value?.state.doc.toString()) {
+    formattedJson.value = [];
     return;
   }
+  console.log(`doc: ${view.value?.state.doc.toString()}`);
 
-  try {
-    formattedJson.value = JSON.stringify(JSON.parse(inputJson.value), null, 2);
-  } catch (e) {
-    formattedJson.value = "JSON 格式错误";
-  }
+  formattedJson.value = view.value?.state.doc.toString() || "";
 };
+// 使用codemirror 代码高亮,格式化json
+onMounted(() => {
+  view.value = new EditorView({
+    doc: inputJson.value,
+    extensions: [basicSetup, json(), jsonLanguage],
+    parent: document.querySelector(".source-code")!,
+  });
+  view.value.focus();
+});
 </script>
 <template>
   <div class="flex h-full">
-    <n-input
-      class="flex-1"
-      @blur="formatJson"
-      v-model:value="inputJson"
-      type="textarea"
-      placeholder="输入 JSON 字符串"
-    />
+    <div class="flex-1">
+      <div class="source-code"></div>
+    </div>
     <div class="px-2">
       <n-button @click="formatJson">格式化</n-button>
     </div>
