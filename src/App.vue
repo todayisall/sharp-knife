@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { NaiveProvider } from "./components/common";
 </script>
 
 <template>
-  <NConfigProvider class="h-full w-full">
+  <NaiveProvider class="h-full w-full">
     <RouterView />
-  </NConfigProvider>
+  </NaiveProvider>
 </template>
 
 <style scoped></style>

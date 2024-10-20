@@ -8,6 +8,9 @@ dependencies:
   '@codemirror/lang-json':
     specifier: ^6.0.1
     version: 6.0.1
+  '@codemirror/lint':
+    specifier: ^6.8.2
+    version: 6.8.2
   '@tauri-apps/api':
     specifier: ^2.0.2
     version: 2.0.2
@@ -23,6 +26,9 @@ dependencies:
   naive-ui:
     specifier: ^2.39.0
     version: 2.39.0(vue@3.3.4)
+  prettier:
+    specifier: ^3.3.3
+    version: 3.3.3
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -66,20 +72,20 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@babel/helper-string-parser@7.24.8:
-    resolution: {integrity: sha512-pO9KhhRcuUyGnJWwyEgnRJTSIZHiT+vMD0kPeD+so0l7mxkMT19g3pjY9GTnHySck/hDzq+dtW/4VgnMkippsQ==}
+  /@babel/helper-string-parser@7.25.7:
+    resolution: {integrity: sha512-CbkjYdsJNHFk8uqpEkpCvRs3YRp9tY6FmFY7wLMSYuGYkrdUi7r2lc4/wqsvlHoMznX3WJ9IP8giGPq68T/Y6g==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/helper-validator-identifier@7.24.7:
-    resolution: {integrity: sha512-rR+PBcQ1SMQDDyF6X0wxtG8QyLCgUB0eRAGguqRLfkCA87l7yAP7ehq8SNj96OOGTO8OBV70KhuFYcIkHXOg0w==}
+  /@babel/helper-validator-identifier@7.25.7:
+    resolution: {integrity: sha512-AM6TzwYqGChO45oiuPqwL2t20/HdMC1rTPAesnBCgPCSF1x3oN9MVUwQV2iyz4xqWrctwK5RNC8LV22kaQCNYg==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/parser@7.25.6:
-    resolution: {integrity: sha512-trGdfBdbD0l1ZPmcJ83eNxB9rbEax4ALFTF7fN386TMYbeCQbyme5cOEXQhbGXKebwGaB/J52w1mrklMcbgy6Q==}
+  /@babel/parser@7.25.8:
+    resolution: {integrity: sha512-HcttkxzdPucv3nNFmfOOMfFf64KgdJVqm1KaCm25dPGMLElo9nsLvXeJECQg8UzPuBGLyTSA0ZzqCtDSzKTEoQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.25.6
+      '@babel/types': 7.25.8
 
   /@babel/runtime@7.25.6:
     resolution: {integrity: sha512-VBj9MYyDb9tuLq7yzqjgzt6Q+IBQLrGZfdjOekyEirZPHxXWoTSGUTMrpsfi58Up73d13NfYLv8HT9vmznjzhQ==}
@@ -88,12 +94,12 @@ packages:
       regenerator-runtime: 0.14.1
     dev: false
 
-  /@babel/types@7.25.6:
-    resolution: {integrity: sha512-/l42B1qxpG6RdfYf343Uw1vmDjeNhneUXtzhojE7pDgfpEypmRhI6j1kr17XCVv4Cgl9HdAiQY2x0GwKm7rWCw==}
+  /@babel/types@7.25.8:
+    resolution: {integrity: sha512-JWtuCu8VQsMladxVz/P4HzHUGCAwpuqacmowgXFs5XjxIgKuNjnLokQzuVjlTvIzODaDmpjT3oxcC48vyk9EWg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-string-parser': 7.24.8
-      '@babel/helper-validator-identifier': 7.24.7
+      '@babel/helper-string-parser': 7.25.7
+      '@babel/helper-validator-identifier': 7.25.7
       to-fast-properties: 2.0.0
 
   /@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.34.1)(@lezer/common@1.2.2):
@@ -807,7 +813,7 @@ packages:
   /@vue/compiler-core@3.3.4:
     resolution: {integrity: sha512-cquyDNvZ6jTbf/+x+AgM2Arrp6G4Dzbb0R64jiG804HRMfRiFXWI6kqUVqZ6ZR0bQhIoQjB4+2bhNtVwndW15g==}
     dependencies:
-      '@babel/parser': 7.25.6
+      '@babel/parser': 7.25.8
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
       source-map-js: 1.2.1
@@ -815,7 +821,7 @@ packages:
   /@vue/compiler-core@3.5.7:
     resolution: {integrity: sha512-A0gay3lK71MddsSnGlBxRPOugIVdACze9L/rCo5X5srCyjQfZOfYtSFMJc3aOZCM+xN55EQpb4R97rYn/iEbSw==}
     dependencies:
-      '@babel/parser': 7.25.6
+      '@babel/parser': 7.25.8
       '@vue/shared': 3.5.7
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -838,7 +844,7 @@ packages:
   /@vue/compiler-sfc@3.3.4:
     resolution: {integrity: sha512-6y/d8uw+5TkCuzBkgLS0v3lSM3hJDntFEiUORM11pQ/hKvkhSKZrXW6i69UyXlJQisJxuUEJKAWEqWbWsLeNKQ==}
     dependencies:
-      '@babel/parser': 7.25.6
+      '@babel/parser': 7.25.8
       '@vue/compiler-core': 3.3.4
       '@vue/compiler-dom': 3.3.4
       '@vue/compiler-ssr': 3.3.4
@@ -881,7 +887,7 @@ packages:
   /@vue/reactivity-transform@3.3.4:
     resolution: {integrity: sha512-MXgwjako4nu5WFLAjpBnCj/ieqcjE2aJBINUNQzkZQfzIZA4xn+0fV1tIYBJvvva3N3OvKGofRLvQIwEQPpaXw==}
     dependencies:
-      '@babel/parser': 7.25.6
+      '@babel/parser': 7.25.8
       '@vue/compiler-core': 3.3.4
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
@@ -1573,6 +1579,12 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.1.0
       source-map-js: 1.2.1
+
+  /prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
