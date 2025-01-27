@@ -1,61 +1,46 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { NInput, NButton } from "naive-ui";
-import { invoke } from "@tauri-apps/api/core";
+import { run } from "json_typegen_wasm";
+
+import * as prettier from "prettier";
+import * as parserBabel from "prettier/parser-babel";
+import estreeParser from "prettier/plugins/estree";
 
 const inputJson = ref("");
 const formattedJson = ref("");
-const formatJson = () => {
+
+const transformer = async () => {
   if (!inputJson.value) {
     formattedJson.value = "";
     return;
   }
+  // json java对象转换为json 数据
+  const formatted = await prettier.format(inputJson.value, {
+    parser: "json",
+    plugins: [parserBabel, estreeParser],
+  });
 
-  invoke("convert_json2ts", { jsonString: inputJson.value })
-    .then((res) => {
-      formattedJson.value = res;
+  formattedJson.value = run(
+    "Root",
+    formatted,
+    JSON.stringify({
+      output_mode: "typescript",
     })
-    .catch(() => {
-      formattedJson.value = "JSON 格式错误";
-    });
-
-  // try {
-  //   // 将 JSON 对象转换为 TypeScript 类型
-  //   const json = JSON.parse(inputJson.value);
-  //   const keys = Object.keys(json);
-  //   const type = keys
-  //     .map((key) => {
-  //       const value = json[key];
-  //       const valueType = typeof value;
-  //       if (valueType === "object") {
-  //         if (Array.isArray(value)) {
-  //           return `${key}?: ${valueType}[];`;
-  //         }
-  //         return `${key}: {${Object.keys(value)
-  //           .map((k) => `${k}: ${typeof value[k]};`)
-  //           .join(" ")}};`;
-  //       }
-  //       return `${key}?: ${valueType};`;
-  //     })
-  //     .join("\n");
-
-  //   formattedJson.value = `interface Json {\n${type}\n}`;
-  // } catch (e) {
-  //   formattedJson.value = "JSON 格式错误";
-  // }
+  );
 };
 </script>
 <template>
   <div class="flex h-full">
     <n-input
       class="flex-1"
-      @blur="formatJson"
+      @blur="transformer"
       v-model:value="inputJson"
       type="textarea"
       placeholder="输入 JSON 字符串"
     />
     <div class="px-2">
-      <n-button @click="formatJson">2 Ts</n-button>
+      <n-button @click="transformer">2 Ts</n-button>
     </div>
     <pre class="flex-1 border overflow-auto">{{ formattedJson }}</pre>
   </div>

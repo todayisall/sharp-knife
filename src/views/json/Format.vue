@@ -68,9 +68,10 @@ const handleCopy = () => {
     <div class="px-2">
       <n-button @click="formatJson">格式化</n-button>
     </div>
-    <pre class="flex-1 border overflow-auto" @click="handleCopy">{{
-      formattedJson
-    }}</pre>
+    <pre class="flex-1 border overflow-auto" @click="handleCopy">
+      {{ formattedJson }}
+      </pre
+    >
   </div>
 </template>
 
