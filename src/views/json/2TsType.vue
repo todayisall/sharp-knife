@@ -38,6 +38,7 @@ const transformer = async () => {
       v-model:value="inputJson"
       type="textarea"
       placeholder="输入 JSON 字符串"
+      @update:value="transformer"
     />
     <div class="px-2">
       <n-button @click="transformer">2 Ts</n-button>
